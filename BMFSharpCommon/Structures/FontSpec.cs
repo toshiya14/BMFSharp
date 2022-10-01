@@ -1,20 +1,18 @@
 using System.Drawing;
-using System.Drawing.Imaging;
-using SharpFont;
 
 namespace RMEGo.Game.BMFSharp.Structures;
 
 public record FontSpec
 {
-    public string FontFamily { get; set; }
+    public string FontFamily { get; set; } = string.Empty;
     public int FontIndex { get; set; } = 0;
     public float FontSize { get; set; } = 12;
-    public GlyphRange[] GlyphRange { get; set; }
+    public GlyphRange[] GlyphRange { get; set; } = Array.Empty<GlyphRange>();
     public string BitmapFormat { get; set; } = "raw";
-    public string ForeColor { get; set; }
-    public string BackColor { get; set; }
+    public string ForeColor { get; set; } = "FF000000";
+    public string BackColor { get; set; } = "00FFFFFF";
 
-    private Color String2Color(string color)
+    private static Color String2Color(string color)
     {
         if (color.Length != 8)
         {

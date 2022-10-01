@@ -1,6 +1,4 @@
-using BMFSharp.Structures;
 using RMEGo.Game.BMFSharp.Structures;
-using SharpFont;
 
 namespace RMEGo.Game.BMFSharp;
 

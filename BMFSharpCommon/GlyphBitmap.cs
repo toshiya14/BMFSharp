@@ -1,4 +1,4 @@
-namespace SharpFont;
+namespace RMEGo.Game.BMFSharp;
 
 public record GlyphBitmap { 
     public uint CharCode{ get; set; }

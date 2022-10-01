@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SharpFont;
-
-namespace BMFSharp.Structures;
+﻿namespace RMEGo.Game.BMFSharp.Structures;
 
 public record GlyphCollection
 {

@@ -1,10 +1,5 @@
-using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Imaging;
-using BMFSharp.Structures;
 using RMEGo.Game.BMFSharp.Structures;
 using SharpFont;
-using SharpFont.PostScript;
 
 namespace RMEGo.Game.BMFSharp;
 
@@ -16,10 +11,9 @@ public static class GlyphMapGenerator
         var output = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "output");
         if (outputDebugFiles)
             Directory.CreateDirectory(output);
-        var fontService = new FontService();
         var fontFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, spec.FontFamily);
-        fontService.SetFont(fontFilePath, spec.FontIndex);
-        fontService.SetSize(spec.FontSize);
+
+        var fontService = new FontService(fontFilePath, spec.FontSize, index: spec.FontIndex);
         var list = new List<GlyphBitmap>();
         var rangeIndex = 0;
         foreach (var range in spec.GlyphRange)
