@@ -1,0 +1,40 @@
+﻿<Window x:Class="BMFViewer.Pages.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:s="https://github.com/canton7/Stylet"
+        xmlns:c="clr-namespace:BMFViewer.Components"
+        xmlns:local="clr-namespace:BMFViewer.Pages"
+        mc:Ignorable="d"
+        x:Name="self"
+        d:DataContext="{d:DesignInstance local:ShellViewModel}"
+        Title="Stylet Project" Height="450" Width="800">
+    <DockPanel Drop="Window_Drop" AllowDrop="True">
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Height="30">
+            <TextBlock Margin="3" HorizontalAlignment="Center" VerticalAlignment="Center" Text="搜索："/>
+            <TextBox VerticalContentAlignment="Center" Margin="3" Width="400" Text="{Binding Keyword}"/>
+            <TextBlock Margin="3" HorizontalAlignment="Center" VerticalAlignment="Center" Text="倍率："/>
+            <ComboBox VerticalContentAlignment="Center" Margin="3" ItemsSource="{Binding ZoomRateOptions}" DisplayMemberPath="Display" SelectedValuePath="Value" SelectedValue="{Binding Zoom}" />
+        </StackPanel>
+        <Button DockPanel.Dock="Left" Content="←" Width="50" Background="White" BorderThickness="0" Command="{s:Action PrevPage}"/>
+        <Button DockPanel.Dock="Right" Content="→" Width="50" Background="White" BorderThickness="0" Command="{s:Action NextPage}"/>
+        <Grid Height="30" DockPanel.Dock="Bottom" >
+            <TextBlock d:Text="1 / 10" Text="{Binding PageInfo}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        <Viewbox>
+            <ListBox ItemsSource="{Binding Items}" BorderThickness="0">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Height="480" Width="1024"></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <c:GlyphBox Height="75" Width="50" Image="{Binding BitmapSource}" Character="{Binding Character}" Code="{Binding CharCode}" Zoom="{Binding DataContext.Zoom, ElementName=self}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Viewbox>
+    </DockPanel>
+</Window>

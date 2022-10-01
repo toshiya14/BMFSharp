@@ -1,0 +1,9 @@
+font_family: "TestCases/SalmaproMedium.otf"
+font_size: 72
+bitmap_format: raw
+fore_color: FFFFFFFF
+back_color: 00000000
+glyph_range:
+ - display_name: ASCII
+   start: 0x20
+   end: 0x7e

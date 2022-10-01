@@ -1,6 +1,0 @@
-font_family: "TestCases/SalmaproMedium.otf"
-font_size: 12
-glyph_range:
- - display_name: ASCII
-   start: 0x20
-   end: 0x7e

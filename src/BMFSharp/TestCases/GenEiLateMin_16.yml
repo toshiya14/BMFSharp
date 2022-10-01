@@ -1,0 +1,22 @@
+font_family: "TestCases/GenEiLateMin_v2.ttc"
+font_index: 0
+font_size: 16
+bitmap_format: raw
+fore_color: FFFFFFFF
+back_color: 00000000
+glyph_range:
+ - display_name: ASCII
+   start: 0x20
+   end: 0x7e
+ - display_name: CJK normal
+   start: 0x4e00
+   end: 0x9fbf 
+ - display_name: CJK Symbols and Punctuation
+   start: 0x3000
+   end: 0x303F
+ - display_name: Small Font Variants
+   start: 0xFE50
+   end: 0xFE6F
+ - display_name: Halfwidth and Fullwidth Forms
+   start: 0xFF00
+   end: 0xFFEF
