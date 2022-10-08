@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BMFSharp", "BMFSharp\BMFSha
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BMFViewer", "BMFViewer\BMFViewer.csproj", "{A9F4526E-82BB-4C35-AFAC-6485F1258F95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BMFSharpRenderer", "..\BMFSharpRenderer\BMFSharpRenderer.csproj", "{AD68275C-299E-43C7-8ADB-5B548447C87F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BMFSharpRenderer", "BMFSharpRenderer\BMFSharpRenderer.csproj", "{AD68275C-299E-43C7-8ADB-5B548447C87F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BMFSharpCommon", "..\BMFSharpCommon\BMFSharpCommon.csproj", "{16777241-C82F-4F9F-B289-23B7FA323202}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BMFSharpCommon", "BMFSharpCommon\BMFSharpCommon.csproj", "{16777241-C82F-4F9F-B289-23B7FA323202}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
