@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="SharpFont.Dependencies.x64" Version="2.6.0" />
+    <PackageReference Include="skiasharp" Version="2.88.3" />
     <PackageReference Include="SpaceWizards.SharpFont" Version="1.0.1" />
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
     <PackageReference Include="yamldotnet" Version="12.0.1" />
@@ -22,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\BMFSharpCommon\BMFSharpCommon.csproj" />
+    <ProjectReference Include="..\BMFSharpCommon\BMFSharpCommon.csproj" />
   </ItemGroup>
 
 </Project>

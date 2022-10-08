@@ -2,17 +2,6 @@ using RMEGo.Game.BMFSharp.Structures;
 
 namespace RMEGo.Game.BMFSharp;
 
-public record BMFItem
-{
-    public uint CharCode { get; set; }
-    public short HorizontalBearingX { get; set; }
-    public short HorizontalBearingY { get; set; }
-    public short HorizontalAdvance { get; set; }
-    public long? PngBodyOffset { get; set; }
-    public long? PngBodyLength { get; set; }
-    public byte[]? PngBody { get; set; }
-}
-
 public class BMFLoader
 {
     private static readonly byte[] MAGIC = new byte[] { (byte)'R', (byte)'B', (byte)'M', (byte)'F' };

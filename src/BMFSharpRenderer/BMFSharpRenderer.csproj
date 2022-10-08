@@ -7,4 +7,12 @@
     <RootNamespace>RMEGo.Game.BMFSharp</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp" Version="2.88.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BMFSharpCommon\BMFSharpCommon.csproj" />
+  </ItemGroup>
+
 </Project>
