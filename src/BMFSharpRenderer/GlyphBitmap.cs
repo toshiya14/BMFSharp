@@ -11,19 +11,20 @@ public static class GlyphBitmapExtensions
 {
     public static SKBitmap? LoadFromGlyph(this GlyphBitmap glyph, BitmapFormat format)
     {
-        if (glyph.ImageDataPayload is null || glyph.BitmapWidth == 0 || glyph.BitmapHeight == 0) {
+        if (glyph.ImageDataPayload is null || glyph.ImageDataPayload.Length == 0) {
             return null;
         }
 
-        using var surface = SKSurface.Create(new SKImageInfo(glyph.BitmapWidth, glyph.BitmapHeight));
-        var canvas = surface.Canvas;
+        
         SKBitmap bitmap;
         switch (format)
         {
             case BitmapFormat.Raw:
                 var ms = new MemoryStream(glyph.ImageDataPayload);
                 var bw = new BinaryReader(ms);
-                bitmap = new SKBitmap(glyph.BitmapWidth, glyph.BitmapHeight);
+                var width = bw.ReadInt32();
+                var height = bw.ReadInt32();
+                bitmap = new SKBitmap(width, height);
                 for (var x = 0; x < glyph.BitmapWidth; x++)
                 {
                     for (var y = 0; y < glyph.BitmapHeight; y++)

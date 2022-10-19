@@ -65,8 +65,6 @@ namespace SharpFont
             bitmap.HorizontalAdvance = (short)_fontFace.Glyph.Metrics.HorizontalAdvance.ToInt32();
             bitmap.HorizontalBearingX = (short)_fontFace.Glyph.Metrics.HorizontalBearingX.ToInt32();
             bitmap.HorizontalBearingY = (short)_fontFace.Glyph.Metrics.HorizontalBearingY.ToInt32();
-            bitmap.BitmapHeight = (short)_fontFace.Glyph.Metrics.Height.ToInt32();
-            bitmap.BitmapWidth = (short)_fontFace.Glyph.Metrics.Width.ToInt32();
             // var bmp = new Bitmap(bitmap.BitmapWidth, bitmap.BitmapHeight);
             // using var g = Graphics.FromImage(bmp);
             // g.CompositingQuality = CompositingQuality.HighQuality;
@@ -93,6 +91,9 @@ namespace SharpFont
                     g.DrawImageUnscaled(ft, 0, 0);
                     g.Flush();
                 }
+
+                bitmap.BitmapHeight = (short)bmp.Height;
+                bitmap.BitmapWidth = (short)bmp.Width;
 
                 if (format is not BitmapFormat.Raw)
                 {

@@ -54,23 +54,26 @@ public class TextRenderer
     public SKImage? Draw(double lineHeightRate)
     {
         var eachLine = this.DrawingEachLines();
-        var lineHeight = eachLine.Max(x => x?.Height ?? 0) * lineHeightRate;
+        //var lineHeight = eachLine.Max(x => x?.Height ?? 0) * lineHeightRate;
         var totalWidth = eachLine.Max(x => x?.Width ?? 0);
-        var totalHeight = eachLine.Count * lineHeight;
+        var totalHeight = eachLine.Sum(x=> x?.Height ?? 0);
 
-        if (lineHeight == 0 || totalWidth == 0 || totalHeight == 0)
+        if (totalWidth == 0 || totalHeight == 0)
         {
             return null;
         }
 
         using var surface = SKSurface.Create(new SKImageInfo(totalWidth, (int)totalHeight));
         var canvas = surface.Canvas;
+        var yOffset = 0f;
         for (var lineIndex = 0; lineIndex < eachLine.Count; lineIndex += 1)
         {
             var lineImage = eachLine[lineIndex];
             if (lineImage is not null)
             {
-                canvas.DrawImage(eachLine[lineIndex], new SKPoint(0, (float)(lineIndex * lineHeight)));
+                var lineHeight = lineImage.Height * lineHeightRate;
+                canvas.DrawImage(eachLine[lineIndex], new SKPoint(0, yOffset));
+                yOffset += (float)lineHeight;
             }
         }
         var freezed = surface.Snapshot();
@@ -104,6 +107,23 @@ public class TextRenderer
                 list.Add(null);
             }
         }
+
+#warning Delete these debug outputs.
+
+        Directory.CreateDirectory("debug_output");
+        var i = 0;
+        foreach (var line in list)
+        {
+
+            if (line is not null)
+            {
+                using var fs = File.OpenWrite($"debug_output/{i}.png");
+                line.Encode(SKEncodedImageFormat.Png, 100).SaveTo(fs);
+            }
+
+            i++;
+        }
+
         return list;
     }
 
@@ -125,7 +145,7 @@ public class TextRenderer
                 var glyph = this.IndexedGlyphs[ch];
                 var drawingPosition = new Position(pen.X + glyph.HorizontalBearingX, pen.Y - glyph.HorizontalBearingY);
                 var bitmap = glyph.LoadFromGlyph(this.Glyphs.Format);
-                if (bitmap is not null) canvas.DrawBitmap(bitmap, new SKPoint(pen.X, pen.Y));
+                if (bitmap is not null) canvas.DrawBitmap(bitmap, new SKPoint(drawingPosition.X, drawingPosition.Y));
                 pen = pen with { X = pen.X + glyph.HorizontalAdvance };
             }
             else
