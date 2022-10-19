@@ -69,10 +69,18 @@ public class TextRenderer
         for (var lineIndex = 0; lineIndex < eachLine.Count; lineIndex += 1)
         {
             var lineImage = eachLine[lineIndex];
+            var textline = this.text[lineIndex] as TextLine;
+            var align = textline?.Align ?? TextAlign.Left;
             if (lineImage is not null)
             {
+                var xOffset = align switch {
+                    TextAlign.Left => 0,
+                    TextAlign.Middle => (totalWidth - lineImage.Width) / 2,
+                    TextAlign.Right => totalWidth - lineImage.Width,
+                    _ => 0
+                };
                 var lineHeight = lineImage.Height * lineHeightRate;
-                canvas.DrawImage(eachLine[lineIndex], new SKPoint(0, yOffset));
+                canvas.DrawImage(eachLine[lineIndex], new SKPoint(xOffset, yOffset));
                 yOffset += (float)lineHeight;
             }
         }
@@ -106,22 +114,6 @@ public class TextRenderer
             {
                 list.Add(null);
             }
-        }
-
-#warning Delete these debug outputs.
-
-        Directory.CreateDirectory("debug_output");
-        var i = 0;
-        foreach (var line in list)
-        {
-
-            if (line is not null)
-            {
-                using var fs = File.OpenWrite($"debug_output/{i}.png");
-                line.Encode(SKEncodedImageFormat.Png, 100).SaveTo(fs);
-            }
-
-            i++;
         }
 
         return list;
@@ -168,6 +160,10 @@ public class TextRenderer
         var widthThisLine = 0;
         foreach (var c in text)
         {
+            if (!this.IndexedGlyphs.ContainsKey(c)) {
+                // Skip not existed chars.
+                continue;
+            }
             var glyph = this.IndexedGlyphs[c];
             widthThisLine += glyph.HorizontalAdvance;
             var top = glyph.HorizontalBearingY;

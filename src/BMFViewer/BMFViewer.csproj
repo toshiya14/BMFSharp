@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    
+
     <RootNamespace>BMFViewer</RootNamespace>
   </PropertyGroup>
 
@@ -14,6 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BMFSharp\BMFSharpGenerator.csproj" />
+    <ProjectReference Include="..\BMFSharpGenerator\BMFSharpGenerator.csproj" />
   </ItemGroup>
 </Project>

@@ -11,7 +11,7 @@ var outputDebugFiles = true;
 var deserializer = new DeserializerBuilder()
     .WithNamingConvention(UnderscoredNamingConvention.Instance)
     .Build();
-var font = deserializer.Deserialize<FontSpec>(File.ReadAllText("./TestCases/GenEiLateMin_16.yml"));
+var font = deserializer.Deserialize<FontSpec>(File.ReadAllText("./TestCases/sarasa_regular_16.yml"));
 var output = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "output");
 if (outputDebugFiles)
     Directory.CreateDirectory(output);

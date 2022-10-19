@@ -60,7 +60,7 @@ namespace SharpFont
             var c = (char)charCode;
             var glyphIndex = _fontFace.GetCharIndex(c);
             var bitmap = new GlyphBitmap();
-            _fontFace.LoadGlyph(glyphIndex, LoadFlags.Default, LoadTarget.Normal);
+            _fontFace.LoadGlyph(glyphIndex, LoadFlags.NoHinting | LoadFlags.Render, LoadTarget.Normal);
             bitmap.CharCode = charCode;
             bitmap.HorizontalAdvance = (short)_fontFace.Glyph.Metrics.HorizontalAdvance.ToInt32();
             bitmap.HorizontalBearingX = (short)_fontFace.Glyph.Metrics.HorizontalBearingX.ToInt32();

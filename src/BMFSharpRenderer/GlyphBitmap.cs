@@ -15,7 +15,6 @@ public static class GlyphBitmapExtensions
             return null;
         }
 
-        
         SKBitmap bitmap;
         switch (format)
         {
@@ -25,9 +24,9 @@ public static class GlyphBitmapExtensions
                 var width = bw.ReadInt32();
                 var height = bw.ReadInt32();
                 bitmap = new SKBitmap(width, height);
-                for (var x = 0; x < glyph.BitmapWidth; x++)
+                for (var x = 0; x < width; x++)
                 {
-                    for (var y = 0; y < glyph.BitmapHeight; y++)
+                    for (var y = 0; y < height; y++)
                     {
                         var alpha = bw.ReadByte();
                         var red = bw.ReadByte();
